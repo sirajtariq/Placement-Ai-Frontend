@@ -79,9 +79,9 @@ export default function RootLayout({
         </head>
         <body className={`${inter.className} antialiased`} suppressHydrationWarning>
           <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem={true}
+            attribute={['class', 'data-theme']}
+            defaultTheme="dark"
+            enableSystem={false}
             disableTransitionOnChange={true}
             themes={['light', 'dark', 'solar', 'emerald']}
           >

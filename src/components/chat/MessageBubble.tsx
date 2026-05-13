@@ -44,20 +44,20 @@ export const MessageBubble = memo(function MessageBubble({ message, userImage, u
 
     return (
         <div className={cn(
-            'flex gap-4 max-w-3xl mx-auto animate-fade-in group relative mb-6',
+            'flex gap-3 max-w-3xl mx-auto animate-fade-in group relative mb-4',
             isUser ? 'flex-row-reverse' : 'flex-row'
         )}>
             {/* AI Avatar */}
             {!isUser && (
-                <div className="flex-shrink-0 h-[34px] w-[34px] rounded-[6px] bg-foreground/[0.03] border border-border/50 flex items-center justify-center mt-0.5 group-hover:border-foreground/30 transition-all" aria-hidden="true">
-                    <GraduationCap className="h-5 w-5 text-foreground/80" />
+                <div className="flex-shrink-0 h-6 w-6 rounded-full bg-foreground/[0.03] flex items-center justify-center mt-0.5" aria-hidden="true">
+                    <GraduationCap className="h-3.5 w-3.5 text-muted-foreground/50" />
                 </div>
             )}
 
             <div className={cn(
                 'flex flex-col',
                 isUser ? 'items-end' : 'items-start',
-                'max-w-[85%]'
+                'max-w-[75%]'
             )}>
                 {/* Meta Info on hover */}
                 <div className={cn(
@@ -80,10 +80,8 @@ export const MessageBubble = memo(function MessageBubble({ message, userImage, u
                 </div>
 
                 <div className={cn(
-                    'text-[15px] leading-[1.6]',
-                    isUser
-                        ? 'bg-foreground text-background px-4 py-3 rounded-[12px] border border-foreground/10 shadow-sm'
-                        : 'bg-transparent text-foreground/90 py-1'
+                    'text-sm leading-relaxed transition-all duration-200',
+                    isUser ? 'bg-muted border border-border/50 text-foreground px-4 py-2.5 rounded-xl font-medium text-right shadow-sm' : 'text-foreground/90 pt-0.5'
                 )}>
                     <div className="whitespace-pre-wrap flex flex-col gap-2">
                         <ReactMarkdown
@@ -95,7 +93,7 @@ export const MessageBubble = memo(function MessageBubble({ message, userImage, u
                                         {...props}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-blue-600 dark:text-blue-400 hover:underline font-medium transition-colors"
+                                        className="text-foreground underline underline-offset-2 font-medium transition-colors"
                                     />
                                 ),
                                 ul: ({ node, ...props }) => <ul className="list-disc pl-5 my-1 space-y-1" {...props} />,
@@ -115,7 +113,7 @@ export const MessageBubble = memo(function MessageBubble({ message, userImage, u
                                     key={idx}
                                     onClick={() => openDoc(doc)}
                                     aria-label={`View ${doc.type.replace(/_/g, ' ')}`}
-                                    className="group/doc relative flex flex-col w-[180px] h-[240px] rounded-xl border border-border/40 bg-background overflow-hidden hover:border-foreground/30 hover:shadow-xl transition-all duration-300 transform active:scale-[0.98] shadow-sm"
+                                    className="group/doc relative flex flex-col w-[180px] h-[240px] rounded-md border border-border/30 bg-background overflow-hidden hover:border-foreground/30 hover:shadow-xl transition-all duration-300 transform "
                                 >
                                     {/* Mini PDF Preview Overlay */}
                                     <div className="flex-1 w-full bg-muted/20 p-3 overflow-hidden pointer-events-none relative select-none">
@@ -138,7 +136,7 @@ export const MessageBubble = memo(function MessageBubble({ message, userImage, u
                                     {/* Card Footer */}
                                     <div className="p-3 border-t border-border/40 bg-background z-20">
                                         <div className="flex items-center gap-2 mb-1">
-                                            <FileText className="h-3.5 w-3.5 text-foreground/60" aria-hidden="true" />
+                                            <FileText className="h-3 w-3 text-muted-foreground/50" aria-hidden="true" />
                                             <h4 className="text-[11px] font-bold text-foreground/80 tracking-tight uppercase truncate">{doc.type.replace(/_/g, ' ')}</h4>
                                         </div>
                                         <p className="text-[10px] text-muted-foreground font-medium truncate">
@@ -160,7 +158,7 @@ export const MessageBubble = memo(function MessageBubble({ message, userImage, u
             {/* User Avatar */}
             {
                 isUser && (
-                    <div className="flex-shrink-0 h-[34px] w-[34px] rounded-full overflow-hidden mt-0.5 border border-border/50 group-hover:border-foreground/30 transition-all flex items-center justify-center bg-background shadow-sm">
+                    <div className="flex-shrink-0 h-6 w-6 rounded-full overflow-hidden flex items-center justify-center bg-foreground/[0.03] mt-0.5">
                         {userImage ? (
                             <img
                                 src={userImage}

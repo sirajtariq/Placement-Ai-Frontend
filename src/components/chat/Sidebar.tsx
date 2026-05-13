@@ -21,7 +21,8 @@ import {
     PanelLeftClose,
     PanelLeftOpen,
     LayoutDashboard,
-    MessageSquare
+    MessageSquare,
+    Phone
 } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import {
@@ -233,6 +234,17 @@ export function Sidebar({
                 >
                     <LayoutDashboard className="h-[18px] w-[18px]" aria-hidden="true" />
                     {!isCollapsed && <span>My Dashboard</span>}
+                </button>
+                <button
+                    onClick={() => { }}
+                    title="Calls"
+                    className={cn(
+                        "w-full flex items-center gap-2.5 px-2 py-1.5 text-[13px] font-medium rounded-[6px] transition-all group opacity-50 cursor-not-allowed",
+                        "text-muted-foreground hover:bg-accent hover:text-foreground"
+                    )}
+                >
+                    <Phone className="h-[18px] w-[18px]" aria-hidden="true" />
+                    {!isCollapsed && <span>Calls</span>}
                 </button>
             </div>
 
