@@ -78,8 +78,9 @@ export interface DocumentItem {
 export interface StepItem {
     step_number: number
     title: string
-    description: string
-    links: string[]
+    description?: string
+    links?: string[];
+    documents?: string[];
 }
 
 interface TodoTask {
