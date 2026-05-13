@@ -221,7 +221,7 @@ export function ApplicationTracker() {
                                         key={app.id}
                                         layoutId={String(app.id)}
                                         draggable
-                                        onDragStart={(e: React.DragEvent<HTMLDivElement>) => onDragStart(e as any, app.id)}
+                                        onDragStart={(e) => onDragStart(e as any, app.id)}
                                         onClick={() => setSelectedAppId(app.id)}
                                         className="group relative flex flex-col gap-2.5 p-4 rounded-xl border border-border bg-background transition-all cursor-grab active:cursor-grabbing hover:border-foreground/10 hover:shadow-sm"
                                     >
